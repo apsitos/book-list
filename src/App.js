@@ -59,8 +59,24 @@ function App() {
         list.map((book, i) => {
           return (
           <li key={i}>{book.title} by {book.author}
-            <button key={`edit-${i}`} className="edit" name={book.title} type='button' onClick={editEntry} >Edit</button>
-            <button key={`remove-${i}`} className="remove" name={book.title} type='button' onClick={removeFromList}>Remove</button> 
+            <button 
+              key={`edit-${i}`} 
+              className="edit" 
+              name={book.title} 
+              type='button' 
+              onClick={editEntry}
+            >
+                Edit
+              </button>
+            <button 
+              key={`remove-${i}`} 
+              className="remove" 
+              name={book.title} 
+              type='button' 
+              onClick={removeFromList}
+            >
+              Remove
+            </button> 
           </li>)
         })
       }</ol>
@@ -74,15 +90,39 @@ function App() {
       {errorMessage && <p className="error-message">Entry must include a title.</p>}
 
       <div>
-        <input type="text" name='title' placeholder="title" value={title} onChange={(name, value) => setTitle(name.target.value)} />
-        <input type="text" name='author' placeholder="author" value={author} onChange={(name, value) => setAuthor(name.target.value)} />
+        <input 
+          type="text" 
+          name="title" 
+          placeholder="title" 
+          value={title} 
+          onChange={(name, value) => setTitle(name.target.value)} 
+        />
+        <input 
+          type="text" 
+          name="author" 
+          placeholder="author" 
+          value={author} 
+          onChange={(name, value) => setAuthor(name.target.value)} 
+        />
         <button className="add-to-list" onClick={addToList}>Add to List!</button>
       </div>
 
       {showEdit && (
         <Fragment>
-          <input type="text" name='title' placeholder="title" value={titleToUpdate} onChange={(name, value) => setTitle(name.target.value)} />
-          <input type="text" name='author' placeholder="author" value={authorToUpdate} onChange={(name, value) => setAuthorToUpdate(name.target.value)} />
+          <input 
+            type="text" 
+            name="title" 
+            placeholder="title" 
+            value={titleToUpdate} 
+            onChange={(name, value) => setTitleToUpdate(name.target.value)} 
+          />
+          <input 
+            type="text" 
+            name="author" 
+            placeholder="author" 
+            value={authorToUpdate}
+            onChange={(name, value) => setAuthorToUpdate(name.target.value)} 
+          />
           <button onClick={updateEntry}>Submit Change</button>
         </Fragment>
       )}
