@@ -1,6 +1,6 @@
 This is a demo project.
 
-Create a list of books! Add to it, mark them off when they've been read, remove them from the list entirely!
+Create a list of books! Add to it, edit if you got it wrong, remove them from the list entirely!
 
 ----
 
