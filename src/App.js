@@ -41,7 +41,7 @@ function App() {
 
   const removeFromList = (name) => {
     const extractList = [];
-    list.forEach(book =>{ 
+    list.forEach(book => { 
       if (book.title !== name.currentTarget.name) {
         extractList.push(book)
       }
@@ -63,18 +63,18 @@ function App() {
               key={`edit-${i}`} 
               className="edit" 
               name={book.title} 
+              data-testid={`edit-${book.title}`}
               type='button' 
-              onClick={editEntry}
-            >
-                Edit
-              </button>
+              onClick={editEntry}>
+              Edit
+            </button>
             <button 
               key={`remove-${i}`} 
               className="remove" 
               name={book.title} 
+              data-testid={`remove-${book.title}`}
               type='button' 
-              onClick={removeFromList}
-            >
+              onClick={removeFromList}>
               Remove
             </button> 
           </li>)
@@ -84,8 +84,10 @@ function App() {
   }
 
   return (
-    <div className="booklist">
-      <header>My List of Books to Read</header>
+    <div>
+      <header className="booklist-header">
+        <h1 >My List of Books to Read</h1>
+      </header>
       {showList()}
       {errorMessage && <p className="error-message">Entry must include a title.</p>}
 
@@ -95,14 +97,14 @@ function App() {
           name="title" 
           placeholder="title" 
           value={title} 
-          onChange={(name, value) => setTitle(name.target.value)} 
+          onChange={(name) => setTitle(name.target.value)} 
         />
         <input 
           type="text" 
           name="author" 
           placeholder="author" 
           value={author} 
-          onChange={(name, value) => setAuthor(name.target.value)} 
+          onChange={(name) => setAuthor(name.target.value)} 
         />
         <button className="add-to-list" onClick={addToList}>Add to List!</button>
       </div>
@@ -112,16 +114,16 @@ function App() {
           <input 
             type="text" 
             name="title" 
-            placeholder="title" 
+            placeholder="edit-title" 
             value={titleToUpdate} 
-            onChange={(name, value) => setTitleToUpdate(name.target.value)} 
+            onChange={(name) => setTitleToUpdate(name.target.value)} 
           />
           <input 
             type="text" 
             name="author" 
-            placeholder="author" 
+            placeholder="edit-author" 
             value={authorToUpdate}
-            onChange={(name, value) => setAuthorToUpdate(name.target.value)} 
+            onChange={(name) => setAuthorToUpdate(name.target.value)} 
           />
           <button onClick={updateEntry}>Submit Change</button>
         </Fragment>
