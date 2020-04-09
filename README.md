@@ -2,6 +2,8 @@ This is a demo project.
 
 Create a list of books! Add to it, edit if you got it wrong, remove them from the list entirely!
 
+TODO: convert to checkboxes so users can cross off books they've read; edit titles (!)
+
 ----
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
