@@ -1,9 +1,12 @@
-.booklist {
-  margin: 20px;
+/* .booklist {
   background-color: gainsboro;
   padding: 20px;
   border: 1px darkblue dotted;
   border-radius: 5px;
+} */
+
+body {
+  margin: 20px;
 }
 
 button {
@@ -30,6 +33,16 @@ input {
 
 .error-message {
   color: red;
+}
+
+.edit-form {
+  height: 0;
+  overflow: hidden;
+  transition: height .5x ease-out;
+}
+
+.open {
+  height: 20px;
 }
 
 .remove {

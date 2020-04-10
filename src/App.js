@@ -9,6 +9,7 @@ function App() {
   const [showEdit, setShowEdit] = useState(false);
   const [titleToUpdate, setTitleToUpdate] = useState('');
   const [authorToUpdate, setAuthorToUpdate] = useState('');
+  const [comparison, setComparison] = useState({title: '', author: ''})
   
   const addToList = () => {
     if (!title) {
@@ -23,6 +24,10 @@ function App() {
   
   const editEntry = (element) => {
     setTitleToUpdate(element.target.name)
+    setAuthorToUpdate(element.target.name)
+    // setComparison({title: })
+
+    
     setShowEdit(!showEdit)
   }
   
@@ -54,32 +59,56 @@ function App() {
     if (!list) {
       return <p className='suggestion'>Start Adding Books to Your List!</p>
     }
+    const showEditForm = showEdit ? 'open' : 'closed'
+
     return (
-      <ol>{
+      <ul>{
         list.map((book, i) => {
           return (
-          <li key={i}>{book.title} by {book.author}
-            <button 
-              key={`edit-${i}`} 
-              className="edit" 
-              name={book.title} 
-              data-testid={`edit-${book.title}`}
-              type='button' 
-              onClick={editEntry}>
-              Edit
-            </button>
-            <button 
-              key={`remove-${i}`} 
-              className="remove" 
-              name={book.title} 
-              data-testid={`remove-${book.title}`}
-              type='button' 
-              onClick={removeFromList}>
-              Remove
-            </button> 
-          </li>)
+          <div>
+            <li key={i}>{book.title} by {book.author}
+              <button 
+                key={`edit-${i}`} 
+                className="edit" 
+                name={book.title} 
+                data-testid={`edit-${book.title}`}
+                type='button' 
+                onClick={editEntry}>
+                Edit
+              </button>
+              <button 
+                key={`remove-${i}`} 
+                className="remove" 
+                name={book.title} 
+                data-testid={`remove-${book.title}`}
+                type='button' 
+                onClick={removeFromList}>
+                Remove
+              </button> 
+            </li>
+            <div className="edit-form">
+              <span className={showEditForm}>
+                <input 
+                  type="text" 
+                  name="title" 
+                  placeholder="edit-title" 
+                  value={titleToUpdate} 
+                  onChange={(name) => setTitleToUpdate(name.target.value)} 
+                />
+                <input 
+                  type="text" 
+                  name="author" 
+                  placeholder="edit-author" 
+                  value={authorToUpdate}
+                  onChange={(name) => setAuthorToUpdate(name.target.value)} 
+                />
+                <button onClick={updateEntry}>Submit Change</button>
+              </span>
+            </div>
+          </div>
+          )
         })
-      }</ol>
+      }</ul>
     )
   }
 
@@ -108,26 +137,6 @@ function App() {
         />
         <button className="add-to-list" onClick={addToList}>Add to List!</button>
       </div>
-
-      {showEdit && (
-        <Fragment>
-          <input 
-            type="text" 
-            name="title" 
-            placeholder="edit-title" 
-            value={titleToUpdate} 
-            onChange={(name) => setTitleToUpdate(name.target.value)} 
-          />
-          <input 
-            type="text" 
-            name="author" 
-            placeholder="edit-author" 
-            value={authorToUpdate}
-            onChange={(name) => setAuthorToUpdate(name.target.value)} 
-          />
-          <button onClick={updateEntry}>Submit Change</button>
-        </Fragment>
-      )}
     </div>
   );
 }
