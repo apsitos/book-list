@@ -1,9 +1,13 @@
-.booklist {
-  margin: 20px;
+/* .booklist {
   background-color: gainsboro;
   padding: 20px;
   border: 1px darkblue dotted;
   border-radius: 5px;
+} */
+
+body {
+  margin: 20px;
+
 }
 
 button {
